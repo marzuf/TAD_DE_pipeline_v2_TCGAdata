@@ -38,6 +38,7 @@ echo "... > cond2: $cond2"
 
 datasetDir="/mnt/ed4/marie/other_datasets/$dataset"
 settingF_outputFolder="/mnt/ed4/marie/scripts/TAD_DE_pipeline/SETTING_FILES_cleanInput"
+fpkmFile="$datasetDir/fpkmDT.Rdata"
 rnaseqFile="$datasetDir/rnaseqDT_v2.Rdata"
 cond1SampFile="$datasetDir/${cond1}_ID.Rdata"
 cond2SampFile="$datasetDir/${cond2}_ID.Rdata"
@@ -53,7 +54,7 @@ step1=1     # prepare setting file
 step2=1     # run the pipeline
 
 
-TAD_DE_pipSteps=( "0cleanInput" "1cleanInput" "2" "3" "5" "4" "6" "7" "8c" "9" "10" "11" "13cleanInput" "14f2" "170revision2EZH2" "170" )
+TAD_DE_pipSteps=( "0cleanInputTCGA" "1cleanInput" "2" "3" "5" "4" "6" "7" "8c" "9" "10" "11" "13cleanInput" "14f2" "170revision2EZH2" "170" )
 #TAD_DE_pipSteps=( "0cleanInput" "1cleanInput" "2" "3" "5" )
 #TAD_DE_pipSteps=( "0cleanInput" )
 #TAD_DE_pipSteps=( "13cleanInput" )
@@ -84,6 +85,9 @@ if [[ "$step1" -eq 1 ]] ; then
     # *************************************************************************************************************************
     # ************************************ SETTINGS FOR 0_prepGeneData
     # *************************************************************************************************************************
+
+    # UPDATE 07.12.2018: for RSEM data, the "analog" FPKM file is provided separately (built in prepData)
+    rna_fpkmDT_file <- "$fpkmFile"
 
     rnaseqDT_file <- "$rnaseqFile"
     my_sep <- "\t"

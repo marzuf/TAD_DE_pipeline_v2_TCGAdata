@@ -30,8 +30,6 @@ mutType <- "symbol"
 # UPDATE 06.12.2018: accomodate also the following:
 # Rscript prep_data_all.R THCA mut.RAS mut.RAS mutBRAF mutBRAF
 
-
-
 checkFile <- "DATA_SUMMARY/tcga_datasets_DT.Rdata"
 checkDT <- eval(parse(text = load(checkFile)))
 #type subtype      class nSamplesAnnot nSamplesAnnotExpr nSamplesAnnotExprMut
@@ -91,6 +89,23 @@ if(cond1 == "norm") {
 cat("... nCheck1 = ", nCheck1, "\n")
 cat("... nCheck2 = ", nCheck2, "\n")
 
+### ADDED 07.12.2018
+
+# scaled estimates folder
+seFolderMain <- file.path(setDir, "/mnt/ndata/marco/databank/TCGA/TCGA_gdac/TCGA_gdac_full_snapshots", cancerType)
+seSubFolders <- list.files(seFolderMain, pattern="^2")
+# if("20160715" %in% seSubFolders) {
+#   data_release <- "20160715"
+# } else if("20160128" %in% seSubFolders) {
+#   data_release <- "20160128"
+# } else{
+#   stop("*** ERROR ***\n")
+# }
+data_release <- "20160128"
+seFolder <- file.path(seFolderMain, data_release)
+seFile <- list.files(seFolder, full.names = TRUE, pattern=paste0(".+illuminahiseq.+rnaseqv2.+RSEM_genes__data.Level_3.+gz$"))
+stopifnot(length(seFile) == 1)
+
 # /mnt/ndata/marco/databank/TCGA/TCGA_gdac/TCGA_transcriptome_Oct2016/plain/[...].rnaseqv2__illuminahiseq_rnaseqv2__unc_edu__Level_3__RSEM_genes_normalized__data.data.txt
 exprFolder <- file.path(setDir, "/mnt/ndata/marco/databank/TCGA/TCGA_gdac/TCGA_transcriptome_Oct2016/plain")
 annotFile <- file.path(setDir, "/mnt/ndata/marco/databank/TCGA/TCGA_sample_annotation/tcga.pancanAtlas_sample_type_annotation_v4.txt")
@@ -113,6 +128,7 @@ printAndLog(txt, logFile)
 txt <- paste0("... using gamFile\t=\t", gamFile, "\n")
 printAndLog(txt, logFile)
 
+outputFPKMFile <- file.path(setDir, "/mnt/ed4/marie/other_datasets", cmp_name, "fpkmDT.Rdata")
 outputExprFile <- file.path(setDir, "/mnt/ed4/marie/other_datasets", cmp_name, "rnaseqDT_v2.Rdata")
 outputSamp1File <- file.path(setDir, "/mnt/ed4/marie/other_datasets", cmp_name,  paste0(cond1_out, "_ID.Rdata"))
 outputSamp2File <- file.path(setDir, "/mnt/ed4/marie/other_datasets", cmp_name, paste0(cond2_out, "_ID.Rdata"))
@@ -346,6 +362,87 @@ cat("... nCheck1 = ", nCheck1, "\n")
 cat("... length(cond2_ID) = ", length(cond2_ID), "\n")
 cat("... nCheck2 = ", nCheck2, "\n")
 
+#######################################################################################  PREP THE FPKM DATA
+# discussion with Marco 07.12.2018:
+# to have similar data like FPKM:
+# take the TCGA scaled estimates file
+# the TPM = EC/l * 10⁶/# reads [EC = expected counts, l = length]
+# the scaled estimates = EC/l * 1/reads
+# the EC are the raw counts divided by the 75% value, not corrected for gene length
+# for limma: better to use the EC
+# for comparability with FPKM:
+# scaled estimates * 10^6
+# (TPM: sum of all TPMs in each sample can be different; RPKM: sum of normalized reads may be different)
+
+cat("... start preparing TPM data for RSEM\n")
+
+cmd <- paste0("tar -xzvf ", seFile)
+cat(paste0(cmd, "\n"))
+system(cmd)
+stopifnot(file.exists(seFile))
+
+extractFolder <- gsub(".tar.gz$", "", basename(seFile))
+seInFile <- file.path(extractFolder, gsub(paste0("^.+", cancerType, ".Merge_"), paste0(cancerType, "."), basename(seFile)))
+seInFile <- file.path(extractFolder, gsub("(.+__data\\.)Level_3.+", "\\1data.txt", basename(seInFile)))
+
+seDT <- read.delim(seInFile, stringsAsFactors = FALSE)
+colnames(seDT) <- gsub("\\.", "-", colnames(seDT))
+stopifnot(colnames(seDT)[1] == "Hybridization-REF")
+stopifnot(seDT[1,1] == "gene_id")
+
+colsToKeep <- seDT[1,] %in% c("gene_id", "scaled_estimate")
+stopifnot(length(colsToKeep) == ncol(seDT))
+seDT <- seDT[, colsToKeep]
+stopifnot(ncol(seDT) == sum(colsToKeep))
+stopifnot(seDT[which(seDT[,1] == "gene_id"), 2:ncol(seDT)] == "scaled_estimate")
+seDT <- seDT[-which(seDT[,1] == "gene_id"),]
+seDT[1:3,1:3]
+geneIDs <- strsplit(as.character(seDT[,"Hybridization-REF"]), split="\\|")
+geneIDs <- sapply(geneIDs, function(x) x[[2]])
+stopifnot(!duplicated(geneIDs))
+# rownames(seDT) <- seDT[,"Hybridization-REF"]
+rownames(seDT) <- geneIDs
+seDT <- seDT[,-which(colnames(seDT) == "Hybridization-REF")]
+seDT[1:3,1:3]
+
+tmpDT <- as.data.frame(data.matrix(seDT))
+cat("seDT[4,5] = ", seDT[4,5], "\n")
+cat("tmpDT[4,5] = ", tmpDT[4,5], "\n")
+stopifnot(as.numeric(as.character(tmpDT[4,5])) == as.numeric(as.character(seDT[4,5])))
+stopifnot(is.numeric(tmpDT[4,5]))
+seDT[1:3,1:3]
+tmpDT[1:3,1:3]
+seDT <- tmpDT
+
+colnames(seDT) <- substr(x = colnames(seDT), start = 1, stop = 15)
+stopifnot(cond1_ID %in% colnames(seDT))
+stopifnot(cond2_ID %in% colnames(seDT))
+
+stopifnot(rownames(exprDT) %in% rownames(seDT))
+seDT <- seDT[rownames(exprDT),c(cond1_ID, cond2_ID)]
+
+stopifnot(dim(seDT) == dim(exprDT))
+
+stopifnot(file.exists(seInFile))
+stopifnot(file.exists(seFile))
+stopifnot(grepl(".tar.gz$", seFile))  # the file should always exist !
+stopifnot(grepl(".txt$", seInFile))  # the file should always exist !
+folderToRemove <- dirname(seInFile)
+stopifnot(folderToRemove != seFile)
+
+cmd <- paste0("rm -rf ", folderToRemove)
+cat(paste0(cmd, "\n"))
+system(cmd)
+
+stopifnot(file.exists(seFile))
+stopifnot(! file.exists(seInFile))
+stopifnot(! file.exists(folderToRemove))
+
+save(seDT, file = outputFPKMFile)
+txt <- paste0("... written:", outputFPKMFile, "\n")
+printAndLog(txt, logFile)
+
+#######################################################################################
 
 if(!grepl("^mut(.+)$", cond2)){
   stopifnot(length(cond2_ID) == nCheck2)

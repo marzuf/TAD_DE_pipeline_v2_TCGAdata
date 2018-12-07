@@ -21,7 +21,7 @@ all_args=(
 "TCGAlihc_wt_mutCTNNB1 wt mutCTNNB1"
 "TCGAluad_wt_mutKRAS wt mutKRAS"
 "TCGApaad_wt_mutKRAS wt mutKRAS"
-"TCGAlaml_wt_mutFLT3 wt mutFLT3"
+#"TCGAlaml_wt_mutFLT3 wt mutFLT3"
 "TCGAskcm_wt_mutBRAF wt mutBRAF"
 "TCGAskcm_wt_mutCTNNB1 wt mutCTNNB1"
 "TCGAthca_wt_mutBRAF wt mutBRAF"
@@ -32,6 +32,12 @@ all_args=(
 "TCGAthca_mut.RAS_mutBRAF mut.RAS mutBRAF"
 )
 # N=24
+
+#all_args=(
+#"TCGAlaml_wt_mutFLT3 wt mutFLT3"
+#)
+
+
 for arg in "${all_args[@]}"; do
 
     echo ./run_pipeline.sh $arg
