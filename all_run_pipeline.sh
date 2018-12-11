@@ -5,6 +5,13 @@
 start_time=$(date -R)    
 set -e
 
+all_args=(      
+"TCGAbrca_lum_bas lum bas"
+)
+
+#all_args=(      
+#"TCGAcoad_msi_mss msi mss"
+#)
 #all_args=(
 #"TCGAcesc_adeno_squam adeno squam"
 #"TCGAhnsc_HPVneg_HPVpos HPVneg HPVpos"
@@ -44,9 +51,9 @@ set -e
 #"TCGAluad_nonsmoker_smoker nonsmoker smoker"
 #)
 
-all_args=(
-"TCGAskcm_lowInf_highInf lowInf highInf"
-)
+#all_args=(
+#"TCGAskcm_lowInf_highInf lowInf highInf"
+#)
 
 for arg in "${all_args[@]}"; do
 
