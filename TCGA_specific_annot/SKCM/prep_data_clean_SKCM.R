@@ -1,5 +1,5 @@
 startTime <- Sys.time()
-cat(paste0("> Rscript prep_data_clean_LUAD.R\n"))
+cat(paste0("> Rscript prep_data_clean_SKCM.R\n"))
 
 # Rscript prep_data_clean_SKCM.R
 
