@@ -1,0 +1,282 @@
+
+# change manually in file for the GBM subtypes
+
+in /mnt/etemp/marie/TAD_DE_pipeline_v2_TCGAdata/TCGA_specific_annot/GBM and /mnt/etemp/marie/TAD_DE_pipeline_v2_TCGAdata/TCGA_specific_annot/LUAD
+Rscript prep_GBM_subgroups.R 
+Rscript prep_data_clean_GBM.R 
+
+
+# change manually in file for the GBM subtypes
+Rscript prep_LUAD_subgroups.R 
+Rscript prep_data_clean_LUAD.R 
+
+# for SKCM signatures
+Rscript prep_SKCM_subgroups.R
+Rscript prep_data_clean_SKCM.R
+
+
+mv OUTPUT_FOLDER/TCGAthca_mutBRAF_mutKRAS OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAthca_mutKRAS_mutBRAF OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAlusc_norm_lusc OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAblca_norm_blca OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAstad_norm_gs OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAkich_norm_kich OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAtgct_sem_nonsem OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAsarc_lms_mfs OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAsarc_ddlps_mfs OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAsarc_ddlps_lms OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAlgg_IDHwt_IDHmutnc OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAhnsc_HPVneg_HPVpos OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+mv OUTPUT_FOLDER/TCGAcesc_adeno_squam OUTPUT_FOLDER_TCGA_RUN2_WRONG_MUT_PREP
+
+
+mv OUTPUT_FOLDER/TCGAstad_EBVneg_EBVpos OUTPUT_FOLDER_TCGA_RUN1
+mv OUTPUT_FOLDER/TCGAucec_msi_cnl OUTPUT_FOLDER_TCGA_RUN1
+mv OUTPUT_FOLDER/TCGAthca_thca_mutBRAF OUTPUT_FOLDER_TCGA_RUN1
+mv OUTPUT_FOLDER/TCGAstad_msi_gs OUTPUT_FOLDER_TCGA_RUN1
+mv OUTPUT_FOLDER/TCGAskcm_skcm_mutCTNNB1 OUTPUT_FOLDER_TCGA_RUN1
+mv OUTPUT_FOLDER/TCGAskcm_skcm_mutBRAF OUTPUT_FOLDER_TCGA_RUN1
+mv OUTPUT_FOLDER/TCGApaad_paad_mutKRAS OUTPUT_FOLDER_TCGA_RUN1
+mv OUTPUT_FOLDER/TCGAluad_luad_mutKRAS OUTPUT_FOLDER_TCGA_RUN1
+mv OUTPUT_FOLDER/TCGAlihc_lihc_mutCTNNB1 OUTPUT_FOLDER_TCGA_RUN1
+mv OUTPUT_FOLDER/TCGAlaml_laml_mutFLT3 OUTPUT_FOLDER_TCGA_RUN1
+mv OUTPUT_FOLDER/TCGAacc_acc_mutCTNNB1 OUTPUT_FOLDER_TCGA_RUN1
+
+
+mv OUTPUT_FOLDER/TCGA* OUTPUT_FOLDER_TCGA_RUN3_WRONG_FPKM
+
+
+mv other_datasets/TCGA_vClean other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGA_vAll other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGAthca_mutBRAF_mutKRAS other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGAthca_mutKRAS_mutBRAF other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+
+mv other_datasets/TCGAblca_norm_blca other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGAlusc_norm_lusc other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGAstad_norm_gs other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGAkich_norm_kich other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+
+mv other_datasets/TCGAsarc_lms_mfs other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGAsarc_ddlps_mfs other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGAtgct_sem_nonsem other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+
+mv other_datasets/TCGAlgg_IDHwt_IDHmutnc other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGAsarc_ddlps_lms other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGAhnsc_HPVneg_HPVpos other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+mv other_datasets/TCGAcesc_adeno_squam other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+# 12
+
+
+mv other_datasets/TCGAcesc_adeno_squam other_datasets_TCGA_RUN2_WRONG_PREP_MUT
+
+
+mv other_datasets/TCGA_stad_EBVneg_EBVpos other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_skcm_skcm_mutCTNNB1 other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_paad_paad_mutKRAS other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_acc_acc_mutCTNNB1 other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_laml_laml_mutFLT3 other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_thca_thca_mutBRAF other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_lihc_lihc_mutCTNNB1 other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_skcm_skcm_mutBRAF other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_luad_luad_mutKRAS other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_crc_msi_mss other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_stad_gs_msi other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_ucec_cnl_msi other_datasets_TCGA_RUN1
+mv other_datasets/TCGA_basal_luminal other_datasets_TCGA_RUN1
+
+
+### PREPARE FOR RUN WTH CORRECT RSEM FPKM - RUN SAVE FPKM
+Rscript prep_data_clean.R BLCA norm norm BLCA blca
+Rscript prep_data_clean.R LUSC norm norm LUSC lusc
+Rscript prep_data_clean.R STAD norm norm GS gs
+Rscript prep_data_clean.R KICH norm norm KICH kich
+Rscript prep_data_clean.R SARC LMS lms MFS/UPS mfs
+Rscript prep_data_clean.R SARC DDLPS ddlps MFS/UPS mfs
+Rscript prep_data_clean.R TGCT seminoma sem non-seminoma nonsem
+Rscript prep_data_clean.R LGG IDHwt IDHwt IDHmut-non-codel IDHmutnc
+Rscript prep_data_clean.R CESC AdenoCarcinoma adeno SquamousCarcinoma squam
+Rscript prep_data_clean.R HNSC HPV- HPVneg HPV+ HPVpos
+Rscript prep_data_clean.R SARC DDLPS ddlps LMS lms
+Rscript prep_data_clean.R THCA mut.RAS mut.RAS mutBRAF mutBRAF
+Rscript prep_data_clean.R STAD EBV EBVpos GS gs # ok+checked
+Rscript prep_data_clean.R UCEC MSI msi CN_LOW cnl # ok
+Rscript prep_data_clean.R THCA THCA wt mutBRAF mutBRAF # 480 annotated in GAM, 286 mutBRAF, 194 wt 
+Rscript prep_data_clean.R STAD MSI msi GS gs
+Rscript prep_data_clean.R SKCM SKCM wt mutCTNNB1 mutCTNNB1
+Rscript prep_data_clean.R SKCM SKCM wt mutBRAF mutBRAF
+Rscript prep_data_clean.R PAAD PAAD wt mutKRAS mutKRAS
+Rscript prep_data_clean.R LUAD LUAD wt mutKRAS mutKRAS
+Rscript prep_data_clean.R LIHC LIHC wt mutCTNNB1 mutCTNNB1
+Rscript prep_data_clean.R ACC ACC wt mutCTNNB1 mutCTNNB1
+Rscript prep_data_clean.R LUAD mutKRAS mutKRAS mutEGFR mutEGFR
+
+
+
+Rscript prep_data_clean.R LAML LAML wt mutFLT3 mutFLT3
+
+
+### ADDED DATASETS RUN 2
+Rscript prep_data_clean.R BLCA norm norm BLCA blca
+Rscript prep_data_clean.R LUSC norm norm LUSC lusc
+Rscript prep_data_clean.R STAD norm norm GS gs
+Rscript prep_data_clean.R KICH norm norm KICH kich
+
+Rscript prep_data_clean.R SARC LMS lms MFS/UPS mfs
+Rscript prep_data_clean.R SARC DDLPS ddlps MFS/UPS mfs
+Rscript prep_data_clean.R TGCT seminoma sem non-seminoma nonsem
+
+Rscript prep_data_clean.R LGG IDHwt IDHwt IDHmut-non-codel IDHmutnc
+Rscript prep_data_clean.R CESC AdenoCarcinoma adeno SquamousCarcinoma squam
+Rscript prep_data_clean.R HNSC HPV- HPVneg HPV+ HPVpos
+Rscript prep_data_clean.R SARC DDLPS ddlps LMS lms
+
+Rscript prep_data_clean.R THCA mut.RAS mut.RAS mutBRAF mutBRAF
+
+
+### FROM THE RUN 1
+Rscript prep_data_clean.R STAD EBV EBVpos GS gs # ok+checked
+Rscript prep_data_clean.R UCEC MSI msi CN_LOW cnl # ok
+Rscript prep_data_clean.R THCA THCA wt mutBRAF mutBRAF # 480 annotated in GAM, 286 mutBRAF, 194 wt 
+Rscript prep_data_clean.R STAD MSI msi GS gs
+Rscript prep_data_clean.R SKCM SKCM wt mutCTNNB1 mutCTNNB1
+Rscript prep_data_clean.R SKCM SKCM wt mutBRAF mutBRAF
+Rscript prep_data_clean.R PAAD PAAD wt mutKRAS mutKRAS
+Rscript prep_data_clean.R LUAD LUAD wt mutKRAS mutKRAS
+Rscript prep_data_clean.R LIHC LIHC wt mutCTNNB1 mutCTNNB1
+Rscript prep_data_clean.R LAML LAML wt mutFLT3 mutFLT3
+Rscript prep_data_clean.R ACC ACC wt mutCTNNB1 mutCTNNB1
+
+
+
+### ADDED 06.12.2018
+Rscript prep_data_clean.R LUAD mutKRAS mutKRAS mutEGFR mutEGFR
+
+./run_pipeline.sh TCGAcesc_adeno_squam adeno squam
+./run_pipeline.sh TCGAhnsc_HPVneg_HPVpos HPVneg HPVpos
+./run_pipeline.sh TCGAlgg_IDHwt_IDHmutnc IDHwt IDHmutnc
+./run_pipeline.sh TCGAsarc_ddlps_lms ddlps lms
+./run_pipeline.sh TCGAsarc_ddlps_mfs ddlps mfs
+./run_pipeline.sh TCGAsarc_lms_mfs lms mfs
+./run_pipeline.sh TCGAtgct_sem_nonsem sem nonsem
+
+./run_pipeline.sh TCGAblca_norm_blca
+./run_pipeline.sh TCGAkich_norm_kich
+./run_pipeline.sh TCGAlusc_norm_lusc
+./run_pipeline.sh TCGAstad_norm_gs
+
+
+
+### ADDED SPECIFIC SUBGROUPS - 07.12.2018
+
+./run_pipeline.sh TCGAluad_nonsmoker_smoker nonsmoker smoker
+./run_pipeline.sh TCGAskcm_lowInf_highInf lowInf highInf
+
+./run_pipeline.sh TCGAgbm_classical_neural classical neural
+./run_pipeline.sh TCGAgbm_classical_proneural classical proneural
+./run_pipeline.sh TCGAgbm_classical_mesenchymal classical mesenchymal
+
+
+### redo from previous run
+Rscript prep_data_clean.R BRCA LumA lum Basal bas
+Rscript prep_data_clean.R COAD MSI msi GS mss
+
+#============================================================================================== before 06.12.2018
+
+
+
+Rscript data_summary.R 
+=> summary table to count available datasets and # samples 
+
+Rscript entrezID_GAM.R
+=> retrieve the mapping of gene symbol from GAM to their entrezID
+
+Rscript prep_data.R <cancer type> <cond1> <cond1_out> <cond2> <cond2_out>
+= prepare the Rdata for the pipeline
+
+Rscript prep_settingFile.R <cancer type> <cond1> <cond1_out> <cond2> <cond2_out>
+=> prepare the setting file
+[now done in run_pipeline_sh]
+
+./run_pipeline.sh TCGAcesc_adeno_squamous adeno squamous
+=> prepare setting file (if step1==1)
+=> run the TAD DA pipeline (if step2==1)s
+
+
+Rscript prep_data.R TGCT seminoma sem non-seminoma nonsem
+Rscript prep_data_all.R TGCT seminoma sem non-seminoma nonsem
+Rscript prep_data_clean.R TGCT seminoma sem non-seminoma nonsem
+
+
+Rscript prep_data.R THCA wtKRAS wtKRAS mutKRAS mutKRAS
+Rscript prep_data_all.R THCA wtKRAS wtKRAS mutKRAS mutKRAS
+Rscript prep_data_clean.R THCA wtKRAS wtKRAS mutKRAS mutKRAS
+
+Rscript prep_data_clean.R THCA mutBRAF mutBRAF mutKRAS mutKRAS
+
+Rscript prep_data_clean.R THCA mutBRAF mutBRAF mut.RAS mut.RAS
+
+
+
+##########################################################################################
+
+
+Rscript prep_data.R CESC AdenoCarcinoma adeno SquamousCarcinoma squam
+Rscript prep_data.R HNSC HPV- HPVneg HPV+ HPVpos
+Rscript prep_data.R LGG IDHwt IDHwt IDHmut-non-codel IDHmutnc
+Rscript prep_data.R SARC DDLPS ddlps LMS lms
+Rscript prep_data.R SARC DDLPS ddlps MFS/UPS mfs
+Rscript prep_data.R SARC LMS lms MFS/UPS mfs
+Rscript prep_data.R TGCT seminoma sem non-seminoma nonsem
+
+
+Rscript prep_data.R BLCA norm norm BLCA blca
+TCGAblca_norm_blca
+
+Rscript prep_data.R KICH norm norm KICH kich
+TCGAkich_norm_kich
+
+Rscript prep_data.R LUSC norm norm LUSC lusc
+TCGAlusc_norm_lusc
+
+Rscript prep_data.R STAD norm norm GS gs
+TCGAstad_norm_gs
+
+
+./run_pipeline.sh TCGAcesc_adeno_squam adeno squam
+./run_pipeline.sh TCGAhnsc_HPVneg_HPVpos HPVneg HPVpos
+./run_pipeline.sh TCGAlgg_IDHwt_IDHmutnc IDHwt IDHmutnc
+./run_pipeline.sh TCGAsarc_ddlps_lms ddlps lms
+./run_pipeline.sh TCGAsarc_ddlps_mfs ddlps mfs
+./run_pipeline.sh TCGAsarc_lms_mfs lms mfs
+./run_pipeline.sh TCGAtgct_sem_nonsem sem nonsem
+
+./run_pipeline.sh TCGAblca_norm_blca
+./run_pipeline.sh TCGAkich_norm_kich
+./run_pipeline.sh TCGAlusc_norm_lusc
+./run_pipeline.sh TCGAstad_norm_gs
+
+
+Rscript prep_data.R CESC AdenoCarcinoma adeno SquamousCarcinoma squam
+CESC	AdenoCarcinoma	CESC_AdenoCarcinoma	3	43	43	43		TCGAcesc_adeno_squam
+CESC	SquamousCarcinoma	CESC_SquamousCarcinoma		229	229	229		
+
+Rscript prep_data.R HNSC HPV- HPVneg HPV+ HPVpos
+HNSC	HPV-	HNSC_HPV-	44	415	415	415		TCGAhnsc_neg_pos
+HNSC	HPV+	HNSC_HPV+		72	72	72		
+
+Rscript prep_data.R LGG IDHwt IDHwt IDHmut-non-codel IDHmutnc
+LGG	IDHmut-codel	LGG_IDHmut-codel	0	167	167	167		TCGAlgg_IDHwt_IDHmutnc
+LGG	IDHmut-non-codel	LGG_IDHmut-non-codel		248	248	248		
+LGG	IDHwt	LGG_IDHwt		92	92	92		
+
+Rscript prep_data.R SARC DDLPS ddlps LMS lms
+Rscript prep_data.R SARC DDLPS ddlps MFS mfs
+Rscript prep_data.R SARC LMS lms MFS mfs
+SARC	DDLPS	SARC_DDLPS	2	46	46	46		"TCGAsarc_lms_mfs TCGAsarc_ddlps_lms TCGAsarc_ddlps_mfs"
+SARC	LMS	SARC_LMS		83	83	83		
+SARC	MFS/UPS	SARC_MFS/UPS		80	80	80		
+SARC	Other	SARC_Other		20	20	20		
+
+Rscript prep_data.R TGCT seminoma sem non-seminoma nonsem
+TGCT	non-seminoma	TGCT_non-seminoma	0	82	82	82		TCGAtgct_sem_nonsem
+TGCT	seminoma	TGCT_seminoma		62	62	62		
