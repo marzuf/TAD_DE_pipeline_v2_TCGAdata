@@ -114,6 +114,10 @@ Rscript prep_data_clean.R LUAD mutKRAS mutKRAS mutEGFR mutEGFR
 
 Rscript prep_data_clean.R LAML LAML wt mutFLT3 mutFLT3
 
+# added dataset for prostate cancer 16.01.2019
+Rscript prep_data_clean.R PRAD norm norm PRAD prad
+
+
 
 ### ADDED DATASETS RUN 2
 Rscript prep_data_clean.R BLCA norm norm BLCA blca

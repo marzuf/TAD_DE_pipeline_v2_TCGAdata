@@ -1,13 +1,20 @@
 #!/bin/bash
 
-# ./run_pipeline.sh "TCGAcesc_adeno_squamous adeno squamous
+# ./all_run_pipeline.sh 
+# that will launch:
+# ./run_pipeline.sh TCGAcesc_adeno_squamous adeno squamous
 
 start_time=$(date -R)    
 set -e
 
+# added 16.01.2019
 all_args=(      
-"TCGAbrca_lum_bas lum bas"
+"TCGAprad_norm_prad norm prad"
 )
+
+#all_args=(      
+#"TCGAbrca_lum_bas lum bas"
+#)
 
 #all_args=(      
 #"TCGAcoad_msi_mss msi mss"
