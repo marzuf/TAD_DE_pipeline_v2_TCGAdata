@@ -98,6 +98,18 @@ Rscript prep_data_clean.R CESC AdenoCarcinoma adeno SquamousCarcinoma squam
 Rscript prep_data_clean.R HNSC HPV- HPVneg HPV+ HPVpos
 Rscript prep_data_clean.R SARC DDLPS ddlps LMS lms
 Rscript prep_data_clean.R THCA mut.RAS mut.RAS mutBRAF mutBRAF
+# added 01.03.2018 to investigate variance
+# e.g. for a given expression dataset compare a wt_mut vs a norm_cancer
+TCGAlihc_wt_mutCTNNB1
+=> lihc
+
+Rscript prep_data_clean.R LIHC norm norm LIHC lihc
+
+Rscript prep_data_clean.R LUAD norm norm LUAD luad
+
+
+
+
 Rscript prep_data_clean.R STAD EBV EBVpos GS gs # ok+checked
 Rscript prep_data_clean.R UCEC MSI msi CN_LOW cnl # ok
 Rscript prep_data_clean.R THCA THCA wt mutBRAF mutBRAF # 480 annotated in GAM, 286 mutBRAF, 194 wt 
